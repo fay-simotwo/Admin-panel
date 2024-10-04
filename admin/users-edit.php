@@ -4,12 +4,12 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4>Add User
+                <h4>Edit User
                     <a href="users.php" class="btn btn-primary float-end">Back</a>
                 </h4>
             </div>
             <div class="card-body">
-                <form action="add_user.php" method="POST">
+                <form action="update_user.php" method="POST">
                     <div class="row">
                         <!-- Left Column: Name, Phone Number, Select Role -->
                         <div class="col-md-6">
@@ -21,6 +21,8 @@
                                 <label for="phone" class="form-label">Phone Number</label>
                                 <input type="text" name="phone" class="form-control" id="phone" required>
                             </div>
+
+                            <!-- Select Role Dropdown -->
                             <div class="row">
                                 <!-- Column for Select Role Dropdown -->
                                 <div class="col-md-3 ">
@@ -51,11 +53,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password" required>
+                                <input type="password" name="password" class="form-control" id="password">
                             </div>
                             <div class="mb-3 text-end">
                                 <br>
-                                <button type="submit" name="saveUser" class="btn btn-primary">Save</button>
+                                <button type="submit" name="updateUser" class="btn btn-primary">Update</button>
                             </div>
                         </div>
                     </div>
