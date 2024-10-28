@@ -38,6 +38,23 @@
   });
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const alertBox = document.getElementById("status-message");
+        if (alertBox) {
+            // Set timeout to hide the alert after 3 seconds (3000 milliseconds)
+            setTimeout(() => {
+                alertBox.style.transition = "opacity 0.5s ease";
+                alertBox.style.opacity = 0;
+                setTimeout(() => {
+                    alertBox.remove(); // Remove from DOM after fade out
+                }, 500);
+            }, 3000);
+        }
+    });
+</script>
+
+
 <div class="fixed-plugin">
   <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
     <i class="fa fa-cog py-2"> </i>
