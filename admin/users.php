@@ -1,5 +1,18 @@
 <?php include('includes/header.php'); ?>
 
+<script>
+    console.log("Users List page loaded successfully");
+
+    // Log table rows to verify data display
+    document.addEventListener("DOMContentLoaded", function () {
+        const rows = document.querySelectorAll("table tbody tr");
+        console.log("Number of users loaded:", rows.length);
+        rows.forEach((row, index) => {
+            console.log(`User Row ${index + 1}:`, row.innerText);
+        });
+    });
+</script>
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -9,7 +22,8 @@
                 </h4>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+            <?= alertMessage(); ?>  
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -27,22 +41,12 @@
                             <td>john@example.com</td>
                             <td>1234567890</td>
                             <td>
-                                <a href="users-edit.php?id=1" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="delete_user.php?id=1" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                <a href="users-edit.php" class="btn btn-success btn-sm">Edit</a>
+                                <a href="users-delete.php" class="btn btn-danger btn-sm mx-2" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                             </td>
                         </tr>
                         <!-- Sample Data Row 2 -->
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>jane@example.com</td>
-                            <td>0987654321</td>
-                            <td>
-                                <a href="users-edit.php?id=2" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="delete_user.php?id=2" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-                            </td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                     
                     </tbody>
                 </table>
             </div>

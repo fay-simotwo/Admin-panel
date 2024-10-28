@@ -1,5 +1,21 @@
 <?php include('includes/header.php'); ?>
 
+<script>
+    console.log("Users Create page loaded successfully");
+
+    // Log form submission details
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            console.log("Form submitted");
+            console.log("Name:", document.getElementById("name").value);
+            console.log("Phone:", document.getElementById("phone").value);
+            console.log("Email:", document.getElementById("email").value);
+            console.log("Password:", document.getElementById("password").value);
+        });
+    });
+</script>
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -9,7 +25,8 @@
                 </h4>
             </div>
             <div class="card-body">
-                <form action="add_user.php" method="POST">
+                <?= alertMessage(); ?>
+                <form action="code.php" method="POST">
                     <div class="row">
                         <!-- Left Column: Name, Phone Number, Select Role -->
                         <div class="col-md-6">
@@ -34,7 +51,7 @@
 
                                 <!-- Column for Select Role Checkbox -->
                                 <div class="col-md-3 ">
-                                    <label class="ms-3">Select Role</label>
+                                    <label class="ms-3">Is Ban</label>
                                     <br />
                                     <input type="checkbox" name="is_ban" style="width:30px;height:30px;" />
 

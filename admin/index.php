@@ -1,4 +1,12 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
 <?php include('includes/header.php'); ?>
+<script>
+    console.log("Index page loaded successfully");
+</script>
+
 
 <div class="row">
     <div class="col-md-3 mb-4">

@@ -1,4 +1,21 @@
+
 <?php include('includes/header.php'); ?>
+
+<script>
+    console.log("Users Edit page loaded successfully");
+
+    // Log form submission details
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            console.log("Form submitted for Edit User");
+            console.log("Name:", document.getElementById("name").value);
+            console.log("Phone:", document.getElementById("phone").value);
+            console.log("Email:", document.getElementById("email").value);
+            console.log("Password:", document.getElementById("password").value);
+        });
+    });
+</script>
 
 <div class="row">
     <div class="col-md-12">
