@@ -7,6 +7,7 @@ if (isset($_POST['registerBtn'])) {
     // Get form data and sanitize
     $name = validate($_POST['name']);
     $email = validate($_POST['email']);
+    $phone = validate($_POST['phone']); 
     $password = validate($_POST['password']);
     $confirm_password = validate($_POST['confirm_password']);
 
@@ -34,9 +35,9 @@ if (isset($_POST['registerBtn'])) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert new user into the database with default role 'user'
-    $insert_query = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, 'user')";
+    $insert_query = "INSERT INTO users (name, email, phone, password, role) VALUES (?, ?, ?, ?, 'user')";
     $insert_stmt = $conn->prepare($insert_query);
-    $insert_stmt->bind_param("sss", $name, $email, $hashed_password);
+    $insert_stmt->bind_param("ssss", $name, $email, $phone, $hashed_password);
 
     if ($insert_stmt->execute()) {
         // Set session variables for automatic login
@@ -45,7 +46,7 @@ if (isset($_POST['registerBtn'])) {
         $_SESSION['user_role'] = 'user'; // Default role
 
         // Redirect to homepage
-        header("Location: index.php"); // Adjust this to the actual homepage URL
+        header("Location: login.php"); // Adjust this to the actual homepage URL
         exit();
     } else {
         $_SESSION['error'] = "Something went wrong. Please try again.";

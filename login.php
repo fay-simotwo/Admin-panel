@@ -1,14 +1,20 @@
 <?php
 $pageTitle = "Login";
-include('includes/header.php'); ?>
-<?php
+include('includes/header.php');
 session_start();
+
+// Check if the user is already logged in
+if (isset($_SESSION['name'])) {
+    header("Location: booking.php");
+    exit();
+}
+
+// Display login error if it exists
 if (isset($_SESSION['login_error'])) {
     echo "<p style='color: red; text-align: center;'>" . $_SESSION['login_error'] . "</p>";
     unset($_SESSION['login_error']);
 }
 ?>
-
 
 <div class="py-5 d-flex align-items-center min-vh-100">
     <div class="container">

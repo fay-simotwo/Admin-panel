@@ -35,6 +35,10 @@ include('includes/header.php');
                             <input type="email" name="email" class="form-control" required>
                         </div>
                         <div class="mb-3">
+                            <label>Phone Number</label>
+                            <input type="text" name="phone" class="form-control" placeholder="e.g. 0712345678" required>
+                        </div>
+                        <div class="mb-3">
                             <label>Password</label>
                             <input type="password" name="password" class="form-control" required>
                         </div>

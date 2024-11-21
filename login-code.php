@@ -1,39 +1,36 @@
 <?php
 session_start();
-require_once('../php-admin-panel/admin/config/dbconfig.php'); 
-require_once('../php-admin-panel/admin/config/function.php');
+require_once('./admin/config/dbconfig.php');
 
 if (isset($_POST['loginBtn'])) {
-    $email = validate($_POST['email']); // Sanitize the email input
-    $password = validate($_POST['password']); // Sanitize the password input
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    // Query to find user by email
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
 
-    // Check if user exists and verify password
-    if ($user && password_verify($password, $user['password'])) {
-        // Store user information in the session
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_email'] = $user['email'];
-        $_SESSION['user_role'] = $user['role'];
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
 
-        // Redirect based on user role
-        if ($user['role'] == 'admin') {
-            header("Location: admin/index.php"); 
+        if (password_verify($password, $user['password'])) {
+            // Store user details in session
+            $_SESSION['name'] = $user['name'];
+            $_SESSION['email'] = $user['email'];
+            header("Location: booking.php");
+            exit();
         } else {
-            header("Location: index.php"); 
+            $_SESSION['login_error'] = "Invalid password.";
+            header("Location: login.php");
+            exit();
         }
-        exit();
     } else {
-        // If login fails, redirect back to login with an error message
-        $_SESSION['login_error'] = "Invalid email or password";
+        $_SESSION['login_error'] = "No account found with that email.";
         header("Location: login.php");
         exit();
     }
 }
+
 ?>

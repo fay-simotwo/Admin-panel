@@ -1,9 +1,13 @@
+<?php
+session_start();
+?>
+
 <nav class="navbar navbar-expand-lg navbar shadow-sm py-3">
     <div class="container-fluid">
         <!-- Brand Logo and Name -->
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="assets/images/Logo.png" alt="Logo" style="width: 30px; height: 30px;" class="me-2">
-            <span>Nels Repairs</span>
+            <span class="nels">Nels Repairs</span>
         </a>
         
         <!-- Toggle Button for Mobile View -->
@@ -41,17 +45,43 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact Us</a>
                 </li>
-                
-                <!-- Disabled Link (Example) -->
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
-                </li>
             </ul>
             
+            <!-- User Icon or Login/Signup -->
             <div class="d-flex ms-lg-3">
-                <a href="login.php" class="btn btn-outline-light me-2">Login</a>
-                <a href="register.php" class="btn btn-warning">Sign Up</a>
+                <?php if (isset($_SESSION['name'])): ?>
+                    <!-- User Icon and Dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-fill" style="font-size: 1.5rem; color: black;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li class="dropdown-item text-center">
+                                <strong><?= htmlspecialchars($_SESSION['name']); ?></strong>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form method="POST" action="">
+                                    <button type="submit" name="logoutBtn" class="dropdown-item text-center">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <!-- Login and Signup Buttons -->
+                    <a href="login.php" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register.php" class="btn btn-warning">Sign Up</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </nav>
+
+<?php
+// Handle Logout
+if (isset($_POST['logoutBtn'])) {
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
+?>
