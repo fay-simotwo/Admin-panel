@@ -46,6 +46,7 @@
                                         <option value="">Select Role</option>
                                         <option value="admin">Admin</option>
                                         <option value="user">User</option>
+                                        <option value="technician">Technician</option>
                                     </select>
                                 </div>
 

@@ -35,7 +35,7 @@
                                     <td><?= $userItem['email']; ?></td>
                                     <td><?= $userItem['phone']; ?></td>
                                     <td><?= $userItem['role']; ?></td>
-                                    <td><?= $userItem['is_ban'] ? 'Yes' : 'No'; ?></td>
+                                    <td><?= $userItem['is_ban'] ? 'Banned' : 'Active'; ?></td>
                                     <td>
                                         <a href="users-edit.php?id=<?= $userItem['id']; ?>" class="btn btn-success btn-sm">Edit</a>
                                         <a href="delete-user.php?id=<?= $userItem['id']; ?>" class="btn btn-danger btn-sm mx-2" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>

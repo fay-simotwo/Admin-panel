@@ -68,6 +68,7 @@ if (isset($_GET['id'])) {
                                     <select name="role" class="form-select" required>
                                         <option value="admin" <?= $user['role'] == 'admin' ? 'selected' : ''; ?>>Admin</option>
                                         <option value="user" <?= $user['role'] == 'user' ? 'selected' : ''; ?>>User</option>
+                                        <option value="technician" <?= $user['role'] == 'technician' ? 'selected' : ''; ?>>Technician</option>
                                     </select>
                                 </div>
 

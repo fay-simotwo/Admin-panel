@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'NucleoIcons';
+    src: url('../fonts/nucleo-icons.eot');
+    src: url('../fonts/nucleo-icons.eot') format('embedded-opentype'), 
+         url('../fonts/nucleo-icons.woff2') format('woff2'), 
+         url('../fonts/nucleo-icons.woff') format('woff'), 
+         url('../fonts/nucleo-icons.ttf') format('truetype'), 
+         url('../fonts/nucleo-icons.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    font-family: 'NucleoIcons', sans-serif;
+}
+
+.navbar {
+    background-color: #fff; /* Custom Primary Color */
+}
+
+/* Style Links and Hover */
+.navbar-nav .nav-link {
+    color: #db2777;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+    color: #5c012b; 
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.dropdown-item:hover {
+    background-color: #5c012b;
+    color: #fff;
+}
+
+/* Style the Login and Sign-Up Buttons */
+.btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+    background-color: #5c012b;
+}
+.btn-outline-light:hover {
+    color: #5c012b;
+    background-color: #db2777;
+}
+.btn-warning{
+    background-color: #5c012b;
+    color: #fff;
+}
+.btn-warning:hover{
+    background-color: #db2777;
+}
+/* Small logo styling for better spacing */
+.navbar-brand img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.py-4{
+    background-color: #5c012b;
+}
+.login-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 400px;
+    margin: auto;
+    color: #333;
+}
+
+.login-card h4 {
+    color: #db2777;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+.form-control {
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid #db2777;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: #f472b6;
+    box-shadow: 0px 0px 10px rgba(219, 39, 119, 0.2);
+}
+
+/* Button styling */
+.btn-login {
+    background-color: #db2777;
+    border: none;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: 100%;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.btn-login:hover {
+    background-color: #f472b6;
+}
+
+/* Form label */
+label {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Additional styling for better spacing */
+.py-5 {
+    padding: 5rem 0;
+}
