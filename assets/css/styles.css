@@ -14,7 +14,7 @@ body{
 }
 
 .navbar {
-    background-color: #fff; /* Custom Primary Color */
+    background-color: #fff; 
 }
 
 /* Style Links and Hover */
@@ -40,7 +40,7 @@ body{
     color: #fff;
 }
 
-/* Style the Login and Sign-Up Buttons */
+/*  Login and Sign-Up Buttons */
 .btn-outline-light {
     color: #fff;
     border-color: #fff;
@@ -50,13 +50,16 @@ body{
     color: #5c012b;
     background-color: #ec0e3e;
 }
-.btn-warning{
+/* .btn-warning{
     background-color: #5c012b;
     color: #fff;
+    border-color: #fff;
 }
 .btn-warning:hover{
     background-color: #ec0e3e;
-}
+    color: #5c012b;
+
+} */
 /* Small logo styling for better spacing */
 .navbar-brand img {
     width: 30px;
@@ -109,9 +112,30 @@ body{
 }
 
 .btn-login:hover {
-    background-color: #f472b6;
+    background-color: #5c012b;
+    color: #fff;
 }
+.register-card h4 {
+    color: #ec0e3e;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.btn-register{
+    background-color: #ec0e3e;
+    border: none;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: 100%;
+    transition: background-color 0.3s;
+    font-weight: bold;
 
+}
+.btn-register:hover {
+    background-color: #5c012b;
+    color: #fff;
+}
 /* Form label */
 label {
     color: #333;
@@ -214,4 +238,46 @@ label {
     color: #666;
     font-size: 14px;
     margin-top: 10px;
+}
+.footer {
+    background: #222; /* Dark background for the footer */
+    color: #fff; /* White text for readability */
+    width: 100%; /* Ensures the footer spans the full width */
+    padding: 2rem 0; /* Adds padding for better spacing */
+}
+
+.footer h5 {
+    color: #ec0e3e; /* Accent color for section titles */
+}
+
+.footer ul li {
+    margin-bottom: 10px; /* Spacing between list items */
+}
+
+.footer ul li a {
+    color: #bbb; /* Muted link color */
+}
+
+.footer ul li a:hover {
+    color: #ec0e3e; /* Accent color on hover */
+    text-decoration: underline; /* Underline effect on hover */
+}
+
+.footer .btn-outline-light {
+    border: 1px solid #fff; /* Light border for buttons */
+    color: #fff; /* White text */
+    transition: all 0.3s ease; /* Smooth hover transitions */
+}
+
+.footer .btn-outline-light:hover {
+    background-color: #ec0e3e; /* Background change on hover */
+    border-color: #ec0e3e;
+    color: #fff;
+}
+
+.footer .container-fluid {
+    padding: 0 15px; /* Add padding for spacing */
+}
+.text-h4{
+    color: #ec0e3e;
 }

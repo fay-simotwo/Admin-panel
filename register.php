@@ -47,7 +47,7 @@ include('includes/header.php');
                             <input type="password" name="confirm_password" class="form-control" required>
                         </div>
                         <div class="mb-4">
-                            <button type="submit" name="registerBtn" class="btn btn-register">Sign Up</button>
+                            <button type="submit" name="registerBtn" class="btn btn-register" >Sign Up</button>
                         </div>
                         <p class="text-center" style="color: #666;">Already have an account? <a href="login.php" style="color: #db2777; font-weight: bold;">Log in</a></p>
                     </form>

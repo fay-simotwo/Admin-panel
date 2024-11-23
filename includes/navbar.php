@@ -5,7 +5,7 @@ session_start();
 <nav class="navbar navbar-expand-lg navbar shadow-sm py-3">
     <div class="container-fluid">
         <!-- Brand Logo and Name -->
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
             <img src="assets/images/Logo.png" alt="Logo" style="width: 30px; height: 30px;" class="me-2">
             <span class="nels">Nels Repairs</span>
         </a>
@@ -34,9 +34,10 @@ session_start();
                         Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="Services.php">All Services</a></li>
                         <li><a class="dropdown-item" href="repair.php">Repair Services</a></li>
-                        <li><a class="dropdown-item" href="consultation.php">Consultation</a></li>
+                        <li><a class="dropdown-item" href="booking.php">Book a repair</a></li>
+                        <li><a class="dropdown-item" href="track-repair.php">Track your repair</a></li>
+                        <li><a class="dropdown-item" href="purchase.php">Purchase a device</a></li>
                         <li><a class="dropdown-item" href="support.php">Support</a></li>
                     </ul>
                 </li>
@@ -70,7 +71,7 @@ session_start();
                 <?php else: ?>
                     <!-- Login and Signup Buttons -->
                     <a href="login.php" class="btn btn-outline-light me-2">Login</a>
-                    <a href="register.php" class="btn btn-warning">Sign Up</a>
+                    <a href="register.php" class="btn btn-outline-light">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>

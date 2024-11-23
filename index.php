@@ -3,7 +3,7 @@ $pageTitle = "Home";
 include('includes/header.php');
 ?>
 
-<div class="container mt-4">
+<div class="container py-5">
     <!-- Carousel -->
     <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" data-bs-touch="true">
         <!-- Carousel Indicators -->
@@ -88,9 +88,9 @@ include('includes/header.php');
 
         <!-- Booking Information Section -->
         <div class="col-md-6">
-            <h2 class="fw-bold" style="color: #ec0e3e;">Book a Phone Repair Online</h2>
+            <h2 class="fw-bold" style="color: #ec0e3e;">Book Your Repair Online</h2>
             <p class="text-muted">
-                Book a phone repair now to save waiting time.
+                Book your repair now to save waiting time.
                 Our expert technicians are ready to assist you with quick and reliable repair services.
             </p>
             <a href="<?= $isLoggedIn ? 'booking.php' : 'login.php'; ?>" class="btn btn-lg mt-3" style="border-radius: 30px; background-color: #ec0e3e; color: #fff; padding: 10px 20px; text-decoration: none;">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 require '/home/lastie/Documents/Nels/php-admin-panel/admin/config/function.php';
 ?>
 <!DOCTYPE html>
@@ -24,6 +24,9 @@ require '/home/lastie/Documents/Nels/php-admin-panel/admin/config/function.php';
     <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+    <img src="assets/images/team-2.jpg" alt="Team">
+    <img src="assets/images/logo-spotify.svg" alt="Spotify Logo">
+    <script src="assets/js/42d5adcbca.js"></script>
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
     <script>
         console.log("Header included successfully");
