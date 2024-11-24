@@ -10,7 +10,7 @@ $errorMessage = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $trackingId = $_POST['tracking_id'];
-    $userId = $_SESSION['user_id']; // Get the logged-in user's ID
+    $userId = $_SESSION['user_id']; 
 
     // Fetch repair details from the database and verify ownership
     $query = "SELECT * FROM bookings WHERE tracking_id = ? AND user_id = ?";
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" class="text-center mb-5">
-        <input type="text" name="tracking_id" class="form-control w-50 mx-auto" placeholder="Enter Tracking ID" required>
+        <input type="text" name="tracking_id" class="form-control w-50 mx-auto" placeholder="Enter Tracking ID after booking your repair" required>
         <button type="submit" class="btn btn-outline-light mt-3">Track</button>
     </form>
 

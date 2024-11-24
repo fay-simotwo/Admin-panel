@@ -36,45 +36,56 @@ include('includes/header.php');
         </button>
     </div>
 
-    <!-- Repair Services Section -->
-    <div class="my-5">
-        <h2 class="text-center mb-4">Our Repair Services</h2>
-        <div class="row g-4">
-            <!-- Service 1 -->
-            <div class="col-md-4">
-                <div class="card service-card h-100 text-center">
-                    <div class="card-body">
-                        <!-- Icon for Phone Repair -->
-                        <i class="bi bi-phone" style="font-size: 3rem; color: #ec0e3e;"></i>
-                        <h5 class="card-title mt-3">Phone Repair</h5>
-                        <p class="card-text">We provide expert phone repair services to ensure your device is as good as new.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 2 -->
-            <div class="col-md-4">
-                <div class="card service-card h-100 text-center">
-                    <div class="card-body">
-                        <!-- Icon for Laptop Repair -->
-                        <i class="bi bi-laptop" style="font-size: 3rem; color: #ec0e3e;"></i>
-                        <h5 class="card-title mt-3">Laptop Repair</h5>
-                        <p class="card-text">Our team is skilled at resolving hardware and software issues for laptops.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Service 3 -->
-            <div class="col-md-4">
-                <div class="card service-card h-100 text-center">
-                    <div class="card-body">
-                        <!-- Icon for Tablet Repair -->
-                        <i class="bi bi-tablet" style="font-size: 3rem; color: #ec0e3e;"></i>
-                        <h5 class="card-title mt-3">Tablet Repair</h5>
-                        <p class="card-text">We offer comprehensive repair services for tablets of all brands.</p>
-                    </div>
+  
+    <div id="services" class="container py-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: #ec0e3e;">Our Services</h2>
+        <p class="text-muted">Explore our wide range of services and products to meet your tech needs.</p>
+    </div>
+
+    <!-- Services Section -->
+    <div class="row g-4">
+        <!-- Repairs Section -->
+        <div class="col-md-4">
+            <div class="card h-100 service-card text-center">
+                <div class="card-body">
+                    <i class="bi bi-tools" style="font-size: 3rem; color: #ec0e3e;"></i>
+                    <h5 class="mt-3 fw-bold">Device Repairs</h5>
+                    <p class="text-muted">We provide professional repair services for phones, laptops, tablets, and more.</p>
+                    <a href="repair-services.php" class="btn btn-outline-light" style="border-radius: 30px;">Learn More</a>
                 </div>
             </div>
         </div>
+
+        <!-- Products Section -->
+        <div class="col-md-4">
+            <div class="card h-100 service-card text-center">
+                <div class="card-body">
+                    <i class="bi bi-shop" style="font-size: 3rem; color: #ec0e3e;"></i>
+                    <h5 class="mt-3 fw-bold">Shop Tech Products</h5>
+                    <p class="text-muted">Browse our collection of high-quality laptops, phones, and tablets at great prices.</p>
+                    <a href="products.php" class="btn btn-outline-light" style="border-radius: 30px;">Shop Now</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Support Section -->
+        <div class="col-md-4">
+            <div class="card h-100 service-card text-center">
+                <div class="card-body">
+                    <i class="bi bi-headset" style="font-size: 3rem; color: #ec0e3e;"></i>
+                    <h5 class="mt-3 fw-bold">Customer Support</h5>
+                    <p class="text-muted">Reach out to our support team for any queries or assistance with our services.</p>
+                    <a href="contact.php" class="btn btn-outline-light" style="border-radius: 30px;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+
+           
     </div>
+</div>
 
 </div>
 
@@ -93,49 +104,105 @@ include('includes/header.php');
                 Book your repair now to save waiting time.
                 Our expert technicians are ready to assist you with quick and reliable repair services.
             </p>
-            <a href="<?= $isLoggedIn ? 'booking.php' : 'login.php'; ?>" class="btn btn-lg mt-3" style="border-radius: 30px; background-color: #ec0e3e; color: #fff; padding: 10px 20px; text-decoration: none;">
+            <a href="<?= $isLoggedIn ? 'booking.php' : 'login.php'; ?>" class="btn btn-outline-light btn-lg mt-3" style="border-radius:30px;">
                 Book Now
             </a>
         </div>
     </div>
 
-    <!-- Discover More Services Section -->
-    <div class="my-5">
-    <h2 class="text-center fw-bold " style="color: #ec0e3e;">Discover More Services</h2>
-    <div class="row g-4 mt-4">
-        <!-- Laptops -->
-        <div class="col-md-4">
-            <a href="laptops.php" class="service-box text-decoration-none">
-                <div class="icon-container">
-                    <img src="assets/images/laptop-icon.jpg" alt="Laptops" class="img-fluid">
-                </div>
-                <h5 class="mt-3 fw-bold">Laptops</h5>
-                <p class="text-muted">Browse our collection of high-performance laptops.</p>
-            </a>
-        </div>
+    <div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: #ec0e3e;">Search for Device Repair Details</h2>
+        <p class="text-muted">Enter the device type, issue, or any keyword to find the repair service you need.</p>
+    </div>
 
-        <!-- Phones -->
-        <div class="col-md-4">
-            <a href="phones.php" class="service-box text-decoration-none">
-                <div class="icon-container">
-                    <img src="assets/images/phone-icon.jpg" alt="Phones" class="img-fluid">
-                </div>
-                <h5 class="mt-3 fw-bold">Phones</h5>
-                <p class="text-muted">Discover the latest smartphones at unbeatable prices.</p>
-            </a>
-        </div>
+    <form action="search.php" method="GET" class="d-flex justify-content-center">
+        <input type="text" name="query" class="form-control w-50 me-2" placeholder="Search for repairs..." required>
+        <button type="submit" class="btn btn-outline-light" style="border-radius: 30px;">Search</button>
+    </form>
+</div>
 
-        <!-- Tablets -->
-        <div class="col-md-4">
-            <a href="tablets.php" class="service-box text-decoration-none">
-                <div class="icon-container">
-                    <img src="assets/images/tablet-icon.jpg" alt="Tablets" class="img-fluid">
-                </div>
-                <h5 class="mt-3 fw-bold">Tablets</h5>
-                <p class="text-muted">Explore versatile tablets for work and entertainment.</p>
-            </a>
+    <div id="about" class="container-fluid py-5" style="background-color: #f9f9f9;">
+    <div class="container">
+        <!-- About Section -->
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="fw-bold" style="color: #ec0e3e;">Who We Are</h1>
+                <p class="text-muted">
+                    At <strong>Nels Repairs</strong>, we are passionate about providing reliable, affordable, and high-quality tech repair services and products. 
+                    Our expert team is committed to ensuring your devices work flawlessly, and your tech needs are met with excellence.
+                </p>
+                <a href="services.php" class="btn btn-outline-light btn-lg mt-3" style="border-radius: 30px;">
+                    Explore Our Services
+                </a>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="assets/images/lap.png" alt="About Us" class="img-fluid rounded" style="max-height: 400px;">
+            </div>
         </div>
     </div>
+</div>
+
+<!-- Mission, Vision, and Values Section -->
+<div class="container py-5">
+    <div class="row text-center">
+        <!-- Mission -->
+        <div class="col-md-4">
+            <div class="p-4 shadow-sm rounded" style="background-color: #fff;">
+                <i class="bi bi-flag-fill" style="font-size: 3rem; color: #ec0e3e;"></i>
+                <h4 class="mt-3">Our Mission</h4>
+                <p class="text-muted">
+                    To provide outstanding repair services and high-quality tech products that enhance our customers' lives.
+                </p>
+            </div>
+        </div>
+        <!-- Vision -->
+        <div class="col-md-4">
+            <div class="p-4 shadow-sm rounded" style="background-color: #fff;">
+                <i class="bi bi-eye-fill" style="font-size: 3rem; color: #ec0e3e;"></i>
+                <h4 class="mt-3">Our Vision</h4>
+                <p class="text-muted">
+                    To be the leading tech repair and product provider, known for exceptional service and innovative solutions.
+                </p>
+            </div>
+        </div>
+        <!-- Values -->
+        <div class="col-md-4">
+            <div class="p-4 shadow-sm rounded" style="background-color: #fff;">
+                <i class="bi bi-heart-fill" style="font-size: 3rem; color: #ec0e3e;"></i>
+                <h4 class="mt-3">Our Values</h4>
+                <p class="text-muted">
+                    Integrity, quality, innovation, and customer satisfaction are the pillars of our business.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Us Section -->
+<div class="container py-5">
+    <h2 class="text-center fw-bold" style="color: #ec0e3e;">Why Choose Us?</h2>
+    <div class="row g-4 mt-4">
+        <!-- Quality Service -->
+        <div class="col-md-4 text-center">
+            <i class="bi bi-award-fill" style="font-size: 3rem; color: #ec0e3e;"></i>
+            <h5 class="mt-3">Quality Service</h5>
+            <p class="text-muted">We deliver exceptional results that exceed your expectations.</p>
+        </div>
+        <!-- Affordable Pricing -->
+        <div class="col-md-4 text-center">
+            <i class="bi bi-cash-coin" style="font-size: 3rem; color: #ec0e3e;"></i>
+            <h5 class="mt-3">Affordable Pricing</h5>
+            <p class="text-muted">Our pricing is competitive and transparent with no hidden costs.</p>
+        </div>
+        <!-- Customer Support -->
+        <div class="col-md-4 text-center">
+            <i class="bi bi-telephone-fill" style="font-size: 3rem; color: #ec0e3e;"></i>
+            <h5 class="mt-3">24/7 Support</h5>
+            <p class="text-muted">We’re here to assist you anytime, anywhere.</p>
+        </div>
+    </div>
+</div>
 </div>
 
 

@@ -34,17 +34,17 @@
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5 class="fw-bold text-uppercase">Follow Us</h5>
                 <div class="d-flex">
-                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
-                        <i class="fab fa-facebook-f"></i>
+                <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2" style="background-color: #ec0e3e; border:none;" >
+                        <i class="bi bi-facebook"></i>
                     </a>
-                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
-                        <i class="fab fa-twitter"></i>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2" style="background-color: #ec0e3e; border:none;">
+                        <i class="bi bi-twitter"></i>
                     </a>
-                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
-                        <i class="fab fa-instagram"></i>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2" style="background-color: #ec0e3e; border:none;">
+                        <i class="bi bi-instagram"></i>
                     </a>
-                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle">
-                        <i class="fab fa-linkedin-in"></i>
+                    <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="background-color: #ec0e3e; border:none;">
+                        <i class="bi bi-linkedin"></i>
                     </a>
                 </div>
             </div>

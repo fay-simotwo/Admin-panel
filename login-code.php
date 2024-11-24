@@ -2,9 +2,9 @@
 session_start();
 require_once('./admin/config/dbconfig.php');
 
-if (isset($_POST['loginBtn'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['loginBtn'])) {
+    $email = htmlspecialchars(trim($_POST['email']));
+    $password = htmlspecialchars(trim($_POST['password']));
 
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
@@ -17,9 +17,14 @@ if (isset($_POST['loginBtn'])) {
 
         if (password_verify($password, $user['password'])) {
             // Store user details in session
+            $_SESSION['id'] = $user['id'];
             $_SESSION['name'] = $user['name'];
             $_SESSION['email'] = $user['email'];
-            header("Location: booking.php");
+
+            // Redirect to previous page if set, otherwise redirect to home page
+            $redirectPage = $_SESSION['redirect_to'] ?? 'index.php';
+            unset($_SESSION['redirect_to']); // Remove redirect session variable
+            header("Location: $redirectPage");
             exit();
         } else {
             $_SESSION['login_error'] = "Invalid password.";
@@ -32,5 +37,4 @@ if (isset($_POST['loginBtn'])) {
         exit();
     }
 }
-
 ?>

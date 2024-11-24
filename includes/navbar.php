@@ -20,12 +20,12 @@ session_start();
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link " aria-current="page" href="index.php">Home</a>
                 </li>
                 
                 <!-- About Us -->
                 <li class="nav-item">
-                    <a class="nav-link" href="About.php">About Us</a>
+                    <a class="nav-link" href="about.php">About Us</a>
                 </li>
                 
                 <!-- Services -->
@@ -34,11 +34,12 @@ session_start();
                         Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="repair.php">Repair Services</a></li>
+                        <li><a class="dropdown-item" href="services.php">All Services</a></li>
                         <li><a class="dropdown-item" href="booking.php">Book a repair</a></li>
                         <li><a class="dropdown-item" href="track-repair.php">Track your repair</a></li>
-                        <li><a class="dropdown-item" href="purchase.php">Purchase a device</a></li>
+                        <li><a class="dropdown-item" href="products.php">Shop now</a></li>
                         <li><a class="dropdown-item" href="support.php">Support</a></li>
+                        <li><a class="dropdown-item" href="feedback.php">Feedback</a></li>
                     </ul>
                 </li>
                 
@@ -62,9 +63,8 @@ session_start();
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form method="POST" action="">
-                                    <button type="submit" name="logoutBtn" class="dropdown-item text-center">Logout</button>
-                                </form>
+                            <a href="logout.php" class="dropdown-item text-center">Logout</a>
+
                             </li>
                         </ul>
                     </div>
@@ -79,10 +79,10 @@ session_start();
 </nav>
 
 <?php
-// Handle Logout
-if (isset($_POST['logoutBtn'])) {
-    session_destroy();
-    header("Location: index.php");
-    exit();
-}
-?>
+// // Handle Logout
+// if (isset($_POST['logoutBtn'])) {
+//     session_destroy();
+//     header("Location: index.php");
+//     exit();
+// }
+// ?>

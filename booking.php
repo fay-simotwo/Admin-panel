@@ -3,12 +3,13 @@ session_start();
 $pageTitle = "Book Repair";
 include('includes/header.php');
 
-// Check if the user is logged in
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['id'])) {
+    $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI']; 
     header("Location: login.php");
     exit();
 }
 ?>
+
 
 <div class="container py-5">
     <h2 class="text-center fw-bold mb-4" style="color: #ec0e3e;">Book a Repair Service</h2>
