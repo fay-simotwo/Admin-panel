@@ -21,9 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['loginBtn'])) {
             $_SESSION['name'] = $user['name'];
             $_SESSION['email'] = $user['email'];
 
-            // Redirect to previous page if set, otherwise redirect to home page
             $redirectPage = $_SESSION['redirect_to'] ?? 'index.php';
-            unset($_SESSION['redirect_to']); // Remove redirect session variable
+            unset($_SESSION['redirect_to']); 
             header("Location: $redirectPage");
             exit();
         } else {

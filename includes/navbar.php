@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+    // Admin Navigation
+    echo '<a href="./admin/index.php">Admin Dashboard</a>';
+    }
 ?>
 
 <nav class="navbar navbar-expand-lg navbar shadow-sm py-3">

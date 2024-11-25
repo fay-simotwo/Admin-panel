@@ -142,7 +142,6 @@ label {
     font-weight: 500;
 }
 
-/* Additional styling for better spacing */
 .py-5 {
     padding: 5rem 0;
 }
@@ -240,43 +239,43 @@ label {
     margin-top: 10px;
 }
 .footer {
-    background: #222; /* Dark background for the footer */
-    color: #fff; /* White text for readability */
-    width: 100%; /* Ensures the footer spans the full width */
-    padding: 2rem 0; /* Adds padding for better spacing */
+    background: #222; 
+    color: #fff;
+    width: 100%; 
+    padding: 2rem 0; 
 }
 
 .footer h5 {
-    color: #ec0e3e; /* Accent color for section titles */
+    color: #ec0e3e; 
 }
 
 .footer ul li {
-    margin-bottom: 10px; /* Spacing between list items */
+    margin-bottom: 10px; 
 }
 
 .footer ul li a {
-    color: #bbb; /* Muted link color */
+    color: #bbb;
 }
 
 .footer ul li a:hover {
-    color: #ec0e3e; /* Accent color on hover */
-    text-decoration: underline; /* Underline effect on hover */
+    color: #ec0e3e;
+    text-decoration: underline;
 }
 
 .footer .btn-outline-light {
-    border: 1px solid #fff; /* Light border for buttons */
-    color: #fff; /* White text */
-    transition: all 0.3s ease; /* Smooth hover transitions */
+    border: 1px solid #fff; 
+    color: #fff; 
+    transition: all 0.3s ease; 
 }
 
 .footer .btn-outline-light:hover {
-    background-color: #ec0e3e; /* Background change on hover */
+    background-color: #ec0e3e; 
     border-color: #ec0e3e;
     color: #fff;
 }
 
 .footer .container-fluid {
-    padding: 0 15px; /* Add padding for spacing */
+    padding: 0 15px; 
 }
 .text-h4{
     color: #ec0e3e;

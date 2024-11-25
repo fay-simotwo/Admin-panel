@@ -1,6 +1,17 @@
 <?php
 session_start();
-$pageTitle = "Book Repair";
+
+// Redirect admins to the admin dashboard
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+    header("Location: ./admin/index.php");
+    exit();
+}
+
+// Redirect non-logged-in users to login page
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit();
+}$pageTitle = "Book Repair";
 include('includes/header.php');
 
 if (!isset($_SESSION['id'])) {

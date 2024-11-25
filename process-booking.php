@@ -13,8 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $name = $_SESSION['name'];
     $email = $_SESSION['email'];
-    $deviceType = $_POST['deviceType'];
-    $issueDescription = $_POST['issueDescription'];
+    $userId = $_SESSION['id']; // Assuming 'id' is the logged-in user's ID
+    $deviceType = htmlspecialchars($_POST['deviceType']);
+    $issueDescription = htmlspecialchars($_POST['issueDescription']);
     $preferredDate = $_POST['preferredDate'];
 
     // Validate inputs
@@ -27,14 +28,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Generate a unique tracking ID
     $trackingId = 'TRK' . uniqid();
 
-    // Insert booking into the bookings table
-    $query = "INSERT INTO bookings (name, email, device_type, issue_description, preferred_date, tracking_id) 
-              VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssssss", $name, $email, $deviceType, $issueDescription, $preferredDate, $trackingId);
+    // Start a transaction to ensure data consistency
+    $conn->begin_transaction();
 
-    if ($stmt->execute()) {
-        // Send email to admin
+    try {
+        // Insert booking into the bookings table
+        $query = "INSERT INTO bookings (name, email, device_type, issue_description, preferred_date, tracking_id, status) 
+                  VALUES (?, ?, ?, ?, ?, ?, 'Pending')";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ssssss", $name, $email, $deviceType, $issueDescription, $preferredDate, $trackingId);
+        $stmt->execute();
+
+        // Insert tracking data into repair_tracking table
+        $repairQuery = "INSERT INTO repair_tracking (tracking_id, user_id, device_type, issue_description, status) 
+                        VALUES (?, ?, ?, ?, 'Received')";
+        $stmt2 = $conn->prepare($repairQuery);
+        $stmt2->bind_param("siss", $trackingId, $userId, $deviceType, $issueDescription);
+        $stmt2->execute();
+
+        // Commit the transaction
+        $conn->commit();
+
+        // Notify the admin
         $adminEmail = "chepfaith18@gmail.com"; 
         $subject = "New Repair Booking Submitted";
         $message = "
@@ -46,30 +61,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Issue Description: $issueDescription
         Preferred Date: $preferredDate
         Tracking ID: $trackingId
-
-        Please log in to the admin panel to assign a technician.
         ";
         $headers = "From: no-reply@nelsrepairs.com";
 
-        // Notify the admin
         if (mail($adminEmail, $subject, $message, $headers)) {
             $_SESSION['success'] = "Booking submitted successfully! Your Tracking ID is $trackingId.";
         } else {
             $_SESSION['success'] = "Booking submitted successfully, but the admin notification failed. Your Tracking ID is $trackingId.";
         }
 
-        // Store the tracking ID in the session to display it on the confirmation page
-        $_SESSION['tracking_id'] = $trackingId;
-
         // Redirect to confirmation page
+        $_SESSION['tracking_id'] = $trackingId;
         header("Location: confirmation.php");
         exit();
-    } else {
-        $_SESSION['error'] = "An error occurred while submitting your booking. Please try again.";
+
+    } catch (Exception $e) {
+        // Rollback transaction on failure
+        $conn->rollback();
+        error_log("Error during booking process: " . $e->getMessage());
+        $_SESSION['error'] = "An error occurred. Please try again.";
         header("Location: booking.php");
         exit();
     }
-} else {
-    header("Location: booking.php");
-    exit();
 }

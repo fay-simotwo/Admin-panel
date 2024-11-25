@@ -1,4 +1,17 @@
 <?php
+session_start();
+
+// Redirect admins to the admin dashboard
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+    header("Location: ./admin/index.php");
+    exit();
+}
+
+// Redirect non-logged-in users to login page
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit();
+}
 $pageTitle = "Shop Tech Products";
 include('includes/header.php');
 ?>

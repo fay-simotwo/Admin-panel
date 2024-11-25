@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+// Redirect admins to the admin dashboard
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+    header("Location: ./admin/index.php");
+    exit();
+}
+
+// Redirect non-logged-in users to login page
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit();
+}
 $pageTitle = "Track Your Repair";
 include('includes/header.php');
 require('./admin/config/dbconfig.php');
@@ -9,20 +21,28 @@ $trackingData = null;
 $errorMessage = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $trackingId = $_POST['tracking_id'];
-    $userId = $_SESSION['user_id']; 
+    $trackingId = trim($_POST['tracking_id']);
 
-    // Fetch repair details from the database and verify ownership
-    $query = "SELECT * FROM bookings WHERE tracking_id = ? AND user_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('si', $trackingId, $userId);
+    // If the user is logged in, verify ownership with user_id
+    if (isset($_SESSION['id'])) {
+        $userId = $_SESSION['id']; // User's ID from session
+        $query = "SELECT * FROM repair_tracking WHERE tracking_id = ? AND user_id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('si', $trackingId, $userId);
+    } else {
+        // If the user is not logged in, only validate the tracking ID
+        $query = "SELECT * FROM repair_tracking WHERE tracking_id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s', $trackingId);
+    }
+
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $trackingData = $result->fetch_assoc();
     } else {
-        $errorMessage = "Invalid Tracking ID or it does not belong to your account. Please try again.";
+        $errorMessage = "Invalid Tracking ID. Please try again.";
     }
 }
 ?>
@@ -36,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" class="text-center mb-5">
-        <input type="text" name="tracking_id" class="form-control w-50 mx-auto" placeholder="Enter Tracking ID after booking your repair" required>
+        <input type="text" name="tracking_id" class="form-control w-50 mx-auto" placeholder="Enter Tracking ID" required>
         <button type="submit" class="btn btn-outline-light mt-3">Track</button>
     </form>
 
@@ -45,12 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card mx-auto w-50">
             <div class="card-body">
                 <h5 class="card-title">Tracking ID: <?= htmlspecialchars($trackingData['tracking_id']); ?></h5>
-                <p><strong>Name:</strong> <?= htmlspecialchars($trackingData['name']); ?></p>
-                <p><strong>Email:</strong> <?= htmlspecialchars($trackingData['email']); ?></p>
                 <p><strong>Device Type:</strong> <?= htmlspecialchars($trackingData['device_type']); ?></p>
                 <p><strong>Issue Description:</strong> <?= htmlspecialchars($trackingData['issue_description']); ?></p>
                 <p><strong>Status:</strong> <?= htmlspecialchars($trackingData['status']); ?></p>
-                <p><strong>Preferred Date:</strong> <?= htmlspecialchars($trackingData['preferred_date']); ?></p>
+                <p><strong>Last Updated:</strong> <?= htmlspecialchars($trackingData['last_updated']); ?></p>
             </div>
         </div>
     <?php endif; ?>

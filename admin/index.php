@@ -1,4 +1,16 @@
 <?php
+
+session_start();
+
+// Ensure only admins can access this page
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] != 1) {
+    header("Location: index.php");
+    exit();
+}
+
+$pageTitle = "Admin Dashboard";
+include('includes/header.php');
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
